@@ -1,0 +1,136 @@
+.Navbar{
+    display: flex; /* 내부 요소들을 가로로 정렬 */
+
+    width: 100%; /* 부모 요소의 가로 폭을 채움 */
+    padding-top: 12px;
+    background-color: #000000; /* 배경색 추가 */
+
+}
+.Nav_section{
+    display: flex;
+    width: 493px;
+    height: 50px;
+    flex-shrink: 0;
+    align-items: center;
+}
+.Logo_img{
+    margin-left: 54px;
+    width: 51px;
+    height: 51px;
+    flex-shrink: 0;
+
+}
+.Links{
+    display: inline-flex;
+    padding-right: 1.641px;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2.125px;
+}
+.Link_section_Home{
+    display: flex;
+    padding: 8px;
+    align-items: center;
+    gap: 5.375px;
+    text-decoration: none; /* 링크 밑줄 제거 */
+}
+
+.Link_section_Component{
+    display: flex;
+    padding: 8px;
+    align-items: center;
+    gap: 5.156px;
+    text-decoration: none; /* 링크 밑줄 제거 */
+}
+
+.Link_section_Submit{
+    display: flex;
+    padding: 8px 8px 8px 9px;
+    align-items: center;
+    gap: 5.594px;
+    text-decoration: none; /* 링크 밑줄 제거 */
+}
+
+.Link_style {
+    color: #FFF;
+    text-align: center;
+    font-family: "NotoSansKR-Regular";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 150% */
+}
+
+.Action_section{
+    display: inline-flex;
+    padding: 6px 54.344px 9px 0px;
+    align-items: flex-start;
+    gap: 48px;
+    margin-left: auto;
+}
+
+.Search{
+    display: inline-flex;
+    height: 20px;
+    padding: 10px 16.753px 11px 13px;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    border-radius: 6px;
+    border: 1px solid #57606A;
+    background: rgba(46, 55, 74, 0.82);
+}
+
+.Search_text{
+    display: flex;
+    width: 189.247px;
+    height: 17px;
+    flex-direction: column;
+    justify-content: center;
+    color: #8C959F;
+    font-family: "NotoSansKR-Regular";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.Sign_section{
+    width: 180px;
+    height: 38px;
+    gap: 22px ;
+}
+
+
+.Sign_box{
+    display: inline-flex;
+    height: 30px;
+    padding: 5px 9.656px 5px 9px;
+    align-items: flex-start;
+    justify-content: center;
+    flex-shrink: 0;
+    border-radius: 6px;
+    border: 1px solid #D0D7DE;
+    text-decoration: none; /* 링크 밑줄 제거 */
+    background-color: #1F2937; /* 버튼 배경색 */
+    transition: background-color 0.3s; /* 호버 애니메이션 */
+    width: 50px;
+
+
+}
+
+.Sign_box:first-child {
+    margin-right: 21.56px; /* 원하는 간격으로 조정 */
+}
+.Sign_box:hover{
+    background-color: #374151;
+}
+
+.Sign_style{
+    color: #FFFFFF;
+    font-family: "NotoSansKR-Regular";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 150% */
+}

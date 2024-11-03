@@ -1,0 +1,28 @@
+.Logo_section{
+
+    display: flex;
+    width: 606.628px;
+    height: 228.854px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; /* 로고 내부 텍스트를 중앙 정렬 */
+    margin: 0 auto; /* 수평 중앙 정렬 */
+    position: absolute; /* 페이지 전체에서 위치 조정 */
+    top: 50%; /* 수직 중앙 */
+    left: 54px; /* 페이지 왼쪽에서 약간 떨어뜨리기 */
+    transform: translateY(-50%); /* 수직 중앙 맞춤 */
+    flex-shrink: 0;
+}
+
+.Logo_style{
+    font-family: "NotoSansKR-ExtraBold";
+    font-size: 100px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 106px; /* 88.333% */
+    background: linear-gradient(to bottom right, #0366D6 0%, #F6F8FA 31%) bottom right / 50% 50% no-repeat, linear-gradient(to bottom left, #0366D6 0%, #F6F8FA 31%) bottom left / 50% 50% no-repeat, linear-gradient(to top left, #0366D6 0%, #F6F8FA 31%) top left / 50% 50% no-repeat, linear-gradient(to top right, #0366D6 0%, #F6F8FA 31%) top right / 50% 50% no-repeat;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+}
