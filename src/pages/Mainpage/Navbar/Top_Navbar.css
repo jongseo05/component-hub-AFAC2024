@@ -101,6 +101,10 @@
     gap: 22px ;
 }
 
+.no_underline{
+    text-decoration: none;
+    color: inherit; /* 기본 링크 색상 유지 */
+}
 
 .Sign_box{
     display: inline-flex;

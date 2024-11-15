@@ -1,21 +1,20 @@
 .Dashboard_section {
-    width: 200px;
-    height: 660px;
+    width: 356px;
+    height: 600px;
     flex-shrink: 0;
     position: absolute;
-    top: 80px; /* 상단에서 156px 떨어진 위치 */
+    top: 100px; /* 상단에서 156px 떨어진 위치 */
     left: 984px; /* 왼쪽에서 984px 떨어진 위치 */
     flex-direction: column;
     align-items: center;
-    display: flex;
     justify-content: center;
 }
 
 
 .Dashboard_button_section{
     display: flex;
-    width: 378px;
-    height: 84px;
+    width: 336px;
+    height : 50px;
     padding: 10px;
     align-items: flex-start;
     justify-content: center;
@@ -28,7 +27,7 @@
 .Dashboard_button{
     display: flex;
     width: 360px;
-    height: 72px;
+    height: 30px;
     padding: 10px;
     flex-direction: column;
     align-items: center;
@@ -37,16 +36,20 @@
 
     border-radius: 5px;
     border: 2px solid #FFFFFF;
+
+    text-decoration: none;
+    color: inherit; /* 기본 링크 색상 유지 */
 }
 
 .Dashboard_button_text{
     color: #FFFFFF;
-    text-align: center;
+    justify-content: center; /* 수평 중앙 정렬 */
+    align-items: center; /* 수직 중앙 정렬 */
     font-family: "NotoSansKR-ExtraBold";
-    font-size: 28px;
+    font-size: 22px;
     font-style: normal;
     font-weight: 700;
-    line-height: 24px; /* 85.714% */
+    text-decoration: none;
 }
 
 .Dashboard_img_section{
@@ -59,9 +62,10 @@
     margin-top: 10px;       /* 버튼과 이미지 간 간격 */
 }
 .Dashboard_img{
-    width: 356px;
-    height: 393px;
+    width: 336px;
+    height: 373px;
     flex-shrink: 0;
+    padding : 10px;
 
     border-radius: 10px;
     background: #Ffffff;
@@ -142,9 +146,9 @@
 
 .Link_Component_button_section{
     display: flex;
-    width: 376.324px;
-    height: 82.702px;
-    padding: 10px;
+    width: 3336px;
+    height: 50px;
+    padding-top: 10px;
     flex-direction: column;
     align-items: flex-start;
     gap: 10px;

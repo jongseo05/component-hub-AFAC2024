@@ -1,6 +1,7 @@
-import {React,useEffect,useState} from 'react';
-import {Routes, Route, Link, useParams} from 'react-router-dom';
-import './Dashboard.css'
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import './Dashboard.css';
+import ex_img1 from '../../../assets/img/Dashboard_Example.png';
 
 function Dashboard() {
 
@@ -8,9 +9,9 @@ function Dashboard() {
 
     // 컴포넌트 데이터 예시
     const components = [
-        { image: 'img1.jpg', likes: 120, views: '2.4k' },
-        { image: 'img2.jpg', likes: 150, views: '3.2k' },
-        { image: 'img3.jpg', likes: 90, views: '1.8k' }
+        { image: ex_img1, likes: 120, views: '2.4k' },
+        { image: ex_img1, likes: 150, views: '3.2k' },
+        { image: ex_img1, likes: 90, views: '1.8k' }
     ];
 
     useEffect(() => {
@@ -22,19 +23,18 @@ function Dashboard() {
 
     const currentComponent = components[currentIndex];
 
-
-    return(
+    return (
         <div className="Dashboard_section">
             <div className="Dashboard_button_section">
                 <Link to="/Dashboard" className="Dashboard_button">
-                    Dashboard
+                    <span className="Dashboard_button_text">Dashboard</span>
                 </Link>
             </div>
 
-            <div className="Dashboard_img">
-                <img src="/src/img/Twilight Sky Dreams_ Free iPhone Wallpaper in High Quality.jpg" alt="Popular_Component" className="Dashboard_img"/>
+            {/* Dynamic image from components */}
+            <div className="Dashboard_img_section">
+                <img src={currentComponent.image} alt="Popular Component" className="Dashboard_img"/>
             </div>
-
 
             <div className="Component_information_section">
                 <div className="Dashboard_like_section">
@@ -54,11 +54,16 @@ function Dashboard() {
                         <span className="View_num_typography">Ξ {currentComponent.views}</span>
                     </div>
                 </div>
+
+            </div>
+            <div className="Dashboard_button_section">
+                <Link to="/Dashboard" className="Dashboard_button">
+                    <span className="Dashboard_button_text">Link to component</span>
+                </Link>
             </div>
 
-
         </div>
-    )
+    );
 }
 
-export default Dashboard
+export default Dashboard;

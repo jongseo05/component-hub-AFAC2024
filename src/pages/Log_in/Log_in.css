@@ -1,0 +1,119 @@
+.Log_in {
+    display: flex;               /* Flexbox를 활성화 */
+    height: calc(100vh + 30px); /* 전체 화면 높이 사용 (30px 추가) */
+    background-color: black;     /* 배경색 설정 */
+    justify-content: center;      /* 가로 중앙 정렬 (내용) */
+    align-items: center;          /* 세로 중앙 정렬 (내용) */
+    flex-direction: column;
+}
+
+.Log_in_Container {
+    width: 350px;                /* 고정 너비 */
+    min-height: calc(400px + 30px); /* 최소 높이 (30px 추가) */
+    flex-shrink: 0;              /* 축소되지 않도록 설정 */
+    display: flex;               /* Flexbox 활성화 */
+    justify-content: center;      /* 가로 중앙 정렬 (내용) */
+    align-items: center;          /* 세로 중앙 정렬 (내용) */
+    flex-direction: column;       /* 내용 세로 정렬 */
+    border-radius: 30px;
+    border: 1px solid #4D4D4D;
+    background: linear-gradient(137deg, #262833 49.36%, #191C27 92.11%);
+}
+
+.Log_in_Logo {
+    width: 100px;
+    height: 100px;               /* 로고 높이는 유지 */
+}
+
+.Log_in_box {
+    width: 300px;
+    min-height: calc(200px + 30px); /* 최소 높이 (30px 추가) */
+    flex-shrink: 0;
+    display: flex;
+    margin-top: 10px;
+
+    border: #4D4D4D 1px solid;
+    border-radius: 30px;
+    flex-direction: column; /* ID_box들을 세로로 나열 */
+}
+
+.ID_box {
+    display: flex;
+    flex-direction: column;
+    width: 280px;
+    min-height: 100px;  /* 최소 높이 (30px 추가) */
+    padding-left: 16px;
+    padding-top: 10px;
+}
+
+.ID_text {
+    color: #FFFfff;
+    font-family: "NotoSansKR-Regular";
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px; /* 96% */
+    text-align: left;
+    padding-bottom: 10px;
+}
+
+.ID_enterbox {
+    display: flex;
+    width: 250px;
+    height: 25px;
+    border-radius: 10px;
+    border: 1px solid #4D4D4D;
+    background: #515A63;
+    padding: 5px; /* 입력 상자에 패딩 추가 */
+}
+
+.Log_in_Button {
+
+    display: flex;
+    width : 300px;
+    height : 30px;
+    flex-shrink: 0;
+
+    background-color: #515A63;
+    border: #4D4D4D 1px solid;
+    border-radius: 10px;
+
+    justify-content: center;      /* 가로 중앙 정렬 (내용) */
+    align-items: center;          /* 세로 중앙 정렬 (내용) */
+
+    margin-top: 15px;
+
+}
+
+.Text_button{
+    color: #FFFfff;
+    text-align: center;
+    font-family: "NotoSansKR-Regular";
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px; /* 96% */
+}
+
+.Sign_up_box{
+    width : 350px;
+    height : 40px;
+    justify-content: center;
+    align-items: center;
+
+    margin-top : 20px;
+
+    border: #4D4D4D 3px solid;
+    background: none;
+    border-radius: 10px;
+}
+
+.Sign_up_text1{
+    display: flex;
+    color: #FFFFFF;
+    font-family: "NotoSansKR-Regular";
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px; /* 96% */
+}

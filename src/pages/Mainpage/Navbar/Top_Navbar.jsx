@@ -15,21 +15,21 @@ function Top_Navbar() {
             <div className="Nav_section">
                 <div className="Links">
                     <div className="Link_section_Home">
-                        <Link to="/">
+                        <Link to="/" className="no_underline">
                             <nav className="Link_style">
                                 Home
                             </nav>
                         </Link>
                     </div>
                     <div className="Link_section_Component">
-                        <Link to="/Component">
+                        <Link to="/Component" className="no_underline">
                             <nav className="Link_style">
                                 Component
                             </nav>
                         </Link>
                     </div>
                     <div className="Link_section_Submit">
-                        <Link to="/Submit">
+                        <Link to="/Submit" className="no_underline">
                             <nav className="Link_style">
                                 Submit
                             </nav>
