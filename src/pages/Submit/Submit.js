@@ -1,21 +1,33 @@
-import React, {RefObject, useMemo, useState, useRef} from 'react';
-import ReactQuill, { Quill } from 'react-quill';
-import Top_Navbar from "../Mainpage/Navbar/Top_Navbar";
+import React, { useState, useEffect } from 'react';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
+import { Controlled as CodeMirror } from 'react-codemirror2';
+import 'codemirror/lib/codemirror.css';
+import 'codemirror/theme/material.css';
+import 'codemirror/mode/jsx/jsx';
+import 'codemirror/mode/css/css';
+import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
+import Top_Navbar from '../Mainpage/Navbar/Top_Navbar';
 import './Submit.css';
 
 function Submit_page() {
     const [Component_name, setComponent_name] = useState("");
     const [Component_description, setComponent_description] = useState("");
+    const [selectedOption, setSelectedOption] = useState("");
+    const [jsxCode, setJsxCode] = useState('<div>Hello World!</div>');
+    const [cssCode, setCssCode] = useState('');
 
-    const handleBlur = (e) => {
-        if (e.target.value === "") {
-            e.target.placeholder = e.target.name === "componentName" ? "Enter the Component Name" : "Enter the description of Component Description";
+    useEffect(() => {
+        const styleElement = document.getElementById('live-css');
+        if (styleElement) {
+            styleElement.textContent = cssCode;
+        } else {
+            const newStyleElement = document.createElement('style');
+            newStyleElement.id = 'live-css';
+            newStyleElement.textContent = cssCode;
+            document.head.appendChild(newStyleElement);
         }
-    };
-
-    const handleFocus = (e) => {
-        e.target.placeholder = "";
-    };
+    }, [cssCode]);
 
     return (
         <div>
@@ -34,27 +46,53 @@ function Submit_page() {
                             value={Component_name}
                             className="Component_Name_input"
                             placeholder="Enter the Component Name"
-                            onBlur={handleBlur}
-                            onFocus={handleFocus}
                         />
-                        <div className = "Component_Descrpition">
-
-                        </div>
+                        <ReactQuill
+                            value={Component_description}
+                            onChange={setComponent_description}
+                            className="Component_Descrpition"
+                        />
                     </div>
                 </div>
 
                 <div className="Submit_box2">
-
-                    <div className ="Category_section">
-                        <div className ="Text_section_Category">
-                            <span className ="Text_head">Code</span>
-                            <span className ="Text_normal">Edit the code for live updates</span>
+                    <div className="Category_section">
+                        <div className="Text_section_Category">
+                            <span className="Text_head">Code</span>
+                            <span className="Text_normal">Edit the code for live updates</span>
+                        </div>
+                        <div className="Dropdown_section">
+                            <span className="Text_head">Category</span>
+                            <select
+                                value={selectedOption}
+                                onChange={(e) => setSelectedOption(e.target.value)}
+                                className="Dropdown"
+                            >
+                                <option value="" disabled>Component</option>
+                                <option value="option1">옵션 1</option>
+                                <option value="option2">옵션 2</option>
+                                <option value="option3">옵션 3</option>
+                            </select>
                         </div>
                     </div>
+                    <div className="Line"></div>
+                    <div className="Code_section">
+                        <div className="Code_input">
+                            <span className="Text_head">JSX</span>
 
+                        </div>
+                        <div className="Code_input">
+                            <span className="Text_head">CSS</span>
+
+                        </div>
+                    </div>
+                    <div className="LivePreview_section">
+                        <LiveProvider code={jsxCode} scope={{ React }}>
+                            <LivePreview />
+                            <LiveError />
+                        </LiveProvider>
+                    </div>
                 </div>
-
-
             </div>
         </div>
     );
