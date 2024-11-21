@@ -1,14 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
-import { Controlled as CodeMirror } from 'react-codemirror2';
-import 'codemirror/lib/codemirror.css';
-import 'codemirror/theme/material.css';
-import 'codemirror/mode/jsx/jsx';
-import 'codemirror/mode/css/css';
-import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
 import Top_Navbar from '../Mainpage/Navbar/Top_Navbar';
 import './Submit.css';
+import DragDropUploader from "./File_upload/file_upload";
 
 function Submit_page() {
     const [Component_name, setComponent_name] = useState("");
@@ -17,17 +12,7 @@ function Submit_page() {
     const [jsxCode, setJsxCode] = useState('<div>Hello World!</div>');
     const [cssCode, setCssCode] = useState('');
 
-    useEffect(() => {
-        const styleElement = document.getElementById('live-css');
-        if (styleElement) {
-            styleElement.textContent = cssCode;
-        } else {
-            const newStyleElement = document.createElement('style');
-            newStyleElement.id = 'live-css';
-            newStyleElement.textContent = cssCode;
-            document.head.appendChild(newStyleElement);
-        }
-    }, [cssCode]);
+
 
     return (
         <div>
@@ -77,21 +62,21 @@ function Submit_page() {
                     </div>
                     <div className="Line"></div>
                     <div className="Code_section">
+
+                        {/* JSX */}
                         <div className="Code_input">
                             <span className="Text_head">JSX</span>
-
+                            <DragDropUploader/>
                         </div>
+
+                        {/* JSX */}
                         <div className="Code_input">
                             <span className="Text_head">CSS</span>
-
+                            <DragDropUploader/>
                         </div>
+
                     </div>
-                    <div className="LivePreview_section">
-                        <LiveProvider code={jsxCode} scope={{ React }}>
-                            <LivePreview />
-                            <LiveError />
-                        </LiveProvider>
-                    </div>
+
                 </div>
             </div>
         </div>

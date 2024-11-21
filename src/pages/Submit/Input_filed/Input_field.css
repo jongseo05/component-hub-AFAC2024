@@ -1,0 +1,24 @@
+.input_field {
+    padding-left: 25px; /* Left padding */
+    color: #FFF; /* Text color */
+    font-family: "NotoSansKR-Regular"; /* Font family */
+    font-size: 15px; /* Font size */
+    font-style: normal; /* Font style */
+    font-weight: 100; /* Font weight */
+    line-height: 24px; /* Line height */
+    border: 1px solid #FFF; /* White border */
+}
+
+.input_field_error {
+    border: 1px solid red; /* Red border for error */
+}
+
+.input_field_success {
+    border: 1px solid #FFF; /* White border for success */
+}
+
+.error_message {
+    color: red; /* Error message color */
+    font-size: 12px; /* Error message font size */
+    margin-top: 5px; /* Margin above the error message */
+}
