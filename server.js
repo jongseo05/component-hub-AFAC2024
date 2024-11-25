@@ -1,38 +1,52 @@
 const express = require('express');
 const multer = require('multer');
+const cors = require('cors');
 const path = require('path');
 
+// Initialize the app
 const app = express();
-const port = 3000;
+const PORT = 5000;
 
-// 파일 저장 설정
+// Enable CORS to allow requests from the client
+app.use(cors());
+
+// Setup storage for uploaded files
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, 'uploads/');
+        cb(null, 'uploads/'); // Upload files to 'uploads/' directory
     },
     filename: (req, file, cb) => {
-        cb(null, `${Date.now()}-${file.originalname}`);
-    }
+        cb(null, `${Date.now()}-${file.originalname}`); // Use timestamp and original filename
+    },
 });
 
-const upload = multer({ storage: storage });
+// Multer middleware
+const upload = multer({ storage });
 
-// 정적 파일 제공 설정
-app.use(express.static(path.join(__dirname, 'public')));
+// Create 'uploads' folder if it doesn't exist
+const fs = require('fs');
+const uploadsDir = path.join(__dirname, 'uploads');
+if (!fs.existsSync(uploadsDir)) {
+    fs.mkdirSync(uploadsDir);
+}
 
-// 파일 업로드 엔드포인트
-app.post('/upload', upload.single('file'), (req, res) => {
-    if (req.file) {
-        console.log(`${req.file.originalname} upload is complete!`);
-        res.json({
-            message: 'File uploaded successfully',
-            file: req.file
-        });
-    } else {
-        res.status(400).json({ message: 'File upload failed' });
+// Upload route
+app.post('/upload/jsx', upload.single('file'), (req, res) => {
+    if (!req.file) {
+        return res.status(400).send('No JSX file uploaded.');
     }
+    res.json({ message: 'JSX file uploaded successfully!', file: req.file });
 });
 
-app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
+app.post('/upload/css', upload.single('file'), (req, res) => {
+    if (!req.file) {
+        return res.status(400).send('No CSS file uploaded.');
+    }
+    res.json({ message: 'CSS file uploaded successfully!', file: req.file });
+});
+
+
+// Start the server
+app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
 });

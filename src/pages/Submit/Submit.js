@@ -63,17 +63,19 @@ function Submit_page() {
                     <div className="Line"></div>
                     <div className="Code_section">
 
-                        {/* JSX */}
-                        <div className="Code_input">
-                            <span className="Text_head">JSX</span>
-                            <DragDropUploader/>
-                        </div>
+                            {/* JSX */}
+                            <div className="Code_input">
+                                <span className="Text_head">JSX</span>
+                                <DragDropUploader fileType="jsx"/>
+                            </div>
 
-                        {/* JSX */}
-                        <div className="Code_input">
-                            <span className="Text_head">CSS</span>
-                            <DragDropUploader/>
-                        </div>
+                            {/* CSS */}
+                            <div className="Code_input">
+                                <span className="Text_head">CSS</span>
+                                <DragDropUploader fileType="css"/>
+                            </div>
+
+
 
                     </div>
 
