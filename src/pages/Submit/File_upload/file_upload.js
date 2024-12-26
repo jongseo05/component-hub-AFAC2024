@@ -1,49 +1,37 @@
 import React, { useState } from 'react';
-import '@fortawesome/fontawesome-free/css/all.min.css';
-import axios from 'axios';
+import '@fortawesome/fontawesome-free/css/all.min.css'; // Font Awesome 아이콘
 import './file_upload.css';
 
-const DragDropUploader = ({ fileType }) => {
+const DragDropUploader = ({ fileType, setFileContent }) => {
     const [file, setFile] = useState(null);
     const [dragActive, setDragActive] = useState(false);
     const [uploadComplete, setUploadComplete] = useState(false);
-    const [uploadError, setUploadError] = useState(null);
 
-    // Function to handle file selection
-    const handleFile = async (selectedFile) => {
-        if (!selectedFile.name.endsWith(fileType)) {
+    const handleFileUpload = (uploadedFile) => {
+        if (!uploadedFile.name.endsWith(`.${fileType}`)) {
             alert(`Only ${fileType.toUpperCase()} files are supported.`);
             return;
         }
 
-        setFile(selectedFile);
-        const formData = new FormData();
-        formData.append('file', selectedFile);
-
-        try {
-            const response = await axios.post(`http://localhost:5000/upload/${fileType}`, formData, {
-                headers: { 'Content-Type': 'multipart/form-data' },
-            });
-            console.log(`${fileType.toUpperCase()} file uploaded successfully:`, response.data);
-            setUploadComplete(true);
-            setUploadError(null);
-        } catch (error) {
-            console.error(`Error uploading ${fileType.toUpperCase()} file:`, error);
-            setUploadError('File upload failed. Please try again.');
-        }
+        const reader = new FileReader();
+        reader.onload = (event) => {
+            setFileContent(event.target.result); // 파일 내용을 부모 컴포넌트로 전달
+            setFile(uploadedFile);
+            setUploadComplete(true); // 업로드 완료 상태 설정
+        };
+        reader.readAsText(uploadedFile);
     };
 
-    // Drag-and-drop handlers
     const handleDragOver = (event) => {
         event.preventDefault();
         event.stopPropagation();
-        setDragActive(true);
+        setDragActive(true); // 드래그 활성화
     };
 
     const handleDragLeave = (event) => {
         event.preventDefault();
         event.stopPropagation();
-        setDragActive(false);
+        setDragActive(false); // 드래그 비활성화
     };
 
     const handleDrop = (event) => {
@@ -52,46 +40,45 @@ const DragDropUploader = ({ fileType }) => {
         setDragActive(false);
 
         if (event.dataTransfer.files && event.dataTransfer.files.length > 0) {
-            handleFile(event.dataTransfer.files[0]);
+            handleFileUpload(event.dataTransfer.files[0]); // 파일 처리
             event.dataTransfer.clearData();
         }
     };
 
-    // File input handler
     const handleInputChange = (event) => {
         if (event.target.files && event.target.files.length > 0) {
-            handleFile(event.target.files[0]);
+            handleFileUpload(event.target.files[0]); // 파일 처리
         }
     };
 
     return (
-        <div>
+        <div className="drag-drop-container-wrapper">
+            {/* 업로드 완료 상태를 기반으로 조건부 렌더링 */}
             {!uploadComplete ? (
-                <div>
+                <div
+                    className={`drag-drop-container ${dragActive ? 'drag-active' : ''}`}
+                    onDragOver={handleDragOver}
+                    onDragLeave={handleDragLeave}
+                    onDrop={handleDrop}
+                >
                     <input
                         type="file"
+                        accept={`.${fileType}`}
                         onChange={handleInputChange}
                         style={{ display: 'none' }}
-                        id={`fileInput-${fileType}`}
+                        id={`file-upload-${fileType}`}
                     />
-                    <label
-                        htmlFor={`fileInput-${fileType}`}
-                        className={`drag-drop-container ${dragActive ? 'drag-active' : ''}`}
-                        onDragOver={handleDragOver}
-                        onDragLeave={handleDragLeave}
-                        onDrop={handleDrop}
-                    >
-                        <i className="fas fa-plus"></i>
+                    <label htmlFor={`file-upload-${fileType}`}>
+                        <i className="fas fa-file-upload"></i>
+                        <p>Drag & Drop or click to upload a {fileType.toUpperCase()} file</p>
                     </label>
                 </div>
             ) : (
                 <div className="upload-success-container">
                     <i className="fas fa-check-circle"></i>
-                    <p>{fileType.toUpperCase()} file uploaded successfully!</p>
+                    <p>{fileType.toUpperCase()} file uploaded: {file.name}</p>
                 </div>
             )}
-            {uploadError && <p className="error-message">{uploadError}</p>}
-            <p>{file && `Uploaded ${fileType.toUpperCase()}: ${file.name}`}</p>
         </div>
     );
 };

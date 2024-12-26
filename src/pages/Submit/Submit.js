@@ -4,15 +4,14 @@ import 'react-quill/dist/quill.snow.css';
 import Top_Navbar from '../Mainpage/Navbar/Top_Navbar';
 import './Submit.css';
 import DragDropUploader from "./File_upload/file_upload";
+import PreviewWithCodeSandbox from './Preview/Preview'; // Preview 컴포넌트 추가
 
 function Submit_page() {
     const [Component_name, setComponent_name] = useState("");
     const [Component_description, setComponent_description] = useState("");
     const [selectedOption, setSelectedOption] = useState("");
-    const [jsxCode, setJsxCode] = useState('<div>Hello World!</div>');
-    const [cssCode, setCssCode] = useState('');
-
-
+    const [jsCode, setJsContent] = useState('<div>Hello World!</div>');
+    const [cssCode, setCssContent] = useState('');
 
     return (
         <div>
@@ -44,7 +43,7 @@ function Submit_page() {
                     <div className="Category_section">
                         <div className="Text_section_Category">
                             <span className="Text_head">Code</span>
-                            <span className="Text_normal">Edit the code for live updates</span>
+                            <span className="Text_normal">Upload your component!</span>
                         </div>
                         <div className="Dropdown_section">
                             <span className="Text_head">Category</span>
@@ -62,23 +61,23 @@ function Submit_page() {
                     </div>
                     <div className="Line"></div>
                     <div className="Code_section">
-
-                            {/* JSX */}
-                            <div className="Code_input">
-                                <span className="Text_head">JSX</span>
-                                <DragDropUploader fileType="jsx"/>
-                            </div>
-
-                            {/* CSS */}
-                            <div className="Code_input">
-                                <span className="Text_head">CSS</span>
-                                <DragDropUploader fileType="css"/>
-                            </div>
-
-
-
+                        {/* JS */}
+                        <div className="Code_input">
+                            <span className="Text_head">JS</span>
+                            <DragDropUploader fileType="js" setFileContent={setJsContent} />
+                        </div>
+                        {/* CSS */}
+                        <div className="Code_input">
+                            <span className="Text_head">CSS</span>
+                            <DragDropUploader fileType="css" setFileContent={setCssContent} />
+                        </div>
                     </div>
+                </div>
 
+                {/* Preview Section */}
+                <div className="Preview_section">
+                    <span className="Text_head">Live Preview</span>
+                    <PreviewWithCodeSandbox jsContent={jsCode} cssContent={cssCode} />
                 </div>
             </div>
         </div>

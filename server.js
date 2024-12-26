@@ -8,7 +8,11 @@ const app = express();
 const PORT = 5000;
 
 // Enable CORS to allow requests from the client
-app.use(cors());
+app.use(cors({
+    origin: 'http://localhost:3000', // React 앱의 주소
+    methods: ['GET', 'POST'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+}));
 
 // Setup storage for uploaded files
 const storage = multer.diskStorage({
@@ -16,7 +20,9 @@ const storage = multer.diskStorage({
         cb(null, 'uploads/'); // Upload files to 'uploads/' directory
     },
     filename: (req, file, cb) => {
-        cb(null, `${Date.now()}-${file.originalname}`); // Use timestamp and original filename
+        const now = new Date();
+        const formattedDate = `${now.getFullYear()}${(now.getMonth() + 1).toString().padStart(2, '0')}${now.getDate().toString().padStart(2, '0')}-${now.getHours().toString().padStart(2, '0')}${now.getMinutes().toString().padStart(2, '0')}${now.getSeconds().toString().padStart(2, '0')}`;
+        cb(null, `${formattedDate}-${file.originalname}`); // Use formatted date and original filename
     },
 });
 
@@ -31,11 +37,11 @@ if (!fs.existsSync(uploadsDir)) {
 }
 
 // Upload route
-app.post('/upload/jsx', upload.single('file'), (req, res) => {
+app.post('/upload/js', upload.single('file'), (req, res) => {
     if (!req.file) {
-        return res.status(400).send('No JSX file uploaded.');
+        return res.status(400).send('No JS file uploaded.');
     }
-    res.json({ message: 'JSX file uploaded successfully!', file: req.file });
+    res.json({ message: 'JS file uploaded successfully!', file: req.file });
 });
 
 app.post('/upload/css', upload.single('file'), (req, res) => {
