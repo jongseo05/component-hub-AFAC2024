@@ -1,0 +1,64 @@
+/* reactModule.css */
+.ql-formats {
+    display: inline-flex;
+    gap: 10px;
+    align-items: center;
+    margin: 5px 0;
+}
+
+.ql-formats select,
+.ql-formats button {
+    background-color: #000;
+    color: #FFF;
+    border: 1px solid #FFF;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.ql-formats button:hover,
+.ql-formats select:hover {
+    background-color: #444;
+}
+
+.ql-formats .ql-picker-options {
+    background-color: #000;
+    color: #FFF;
+}
+
+.ql-formats .ql-picker-item:hover {
+    background-color: #444;
+}
+
+.ql-formats .ql-picker-label {
+    color: #FFF;
+}
+
+.ql-formats button.ql-active {
+    background-color: #FFF;
+    color: #000;
+}
+
+/* ql-container 및 ql-toolbar 테두리 둥글게 설정 */
+.ql-container {
+    border-radius: 10px; /* 모든 테두리를 둥글게 */
+    border: none; /* 기본 테두리 제거 */
+    background-color: #000; /* 배경색 유지 */
+    color: #FFF; /* 텍스트 색상 유지 */
+}
+
+.ql-toolbar {
+    border-radius: 10px 10px 0 0; /* 상단 테두리 둥글게 */
+    border: none; /* 기본 테두리 제거 */
+    background-color: #000; /* 툴바 배경 유지 */
+    color: #FFF; /* 툴바 텍스트 유지 */
+}
+
+.ql-editor {
+    border-radius: 0 0 10px 10px; /* 하단 테두리 둥글게 */
+    border: none; /* 기본 테두리 제거 */
+    background-color: #000; /* 에디터 배경 유지 */
+    color: #FFF; /* 에디터 텍스트 유지 */
+}

@@ -5,6 +5,7 @@ import Top_Navbar from '../Mainpage/Navbar/Top_Navbar';
 import './Submit.css';
 import DragDropUploader from "./File_upload/file_upload";
 import PreviewWithCodeSandbox from './Preview/Preview'; // Preview 컴포넌트 추가
+import ReactEditor from "./react_quill_editor/ReactEditor";
 
 function Submit_page() {
     const [Component_name, setComponent_name] = useState("");
@@ -36,18 +37,28 @@ function Submit_page() {
                     </div>
                     <div className="Line"></div>
                     <div className="Component_explain_box">
+                        <span className="Text_normal">Name</span>
                         <input
                             name="componentName"
-                            onChange={(e) => setComponent_name(e.target.value)}
-                            value={Component_name}
+                            onChange={(e) => setComponent_name(e.target.value)} // Component_name 업데이트
+                            value={Component_name} // Component_name 상태 참조
                             className="Component_Name_input"
                             placeholder="Enter the Component Name"
                         />
-                        <ReactQuill
-                            value={Component_description}
-                            onChange={setComponent_description}
+                        <span className="Text_normal">Description</span>
+                        <input
+                            name="Description"
+                            onChange={(e) => setComponent_description(e.target.value)} // Component_description 업데이트
+                            value={Component_description} // Component_description 상태 참조
                             className="Component_Descrpition"
+                            placeholder="Enter the description of the component"
                         />
+                        <div className="Editor_section">
+                            <span className="Text_normal">Content</span>
+                        <ReactEditor/>
+                        </div>
+
+
                     </div>
                 </div>
 
@@ -91,8 +102,27 @@ function Submit_page() {
                             <span className="Text_head">Live-Preview</span>
                             <span className="Text_normal">See preview of your component</span>
                         </div>
-
+                        <PreviewWithCodeSandbox jsContent={jsCode} cssContent={cssCode} />
                     </div>
+
+                </div>
+
+                <div className="Submit_box3">
+
+                    <div className = "Explain_section">
+                        <span className="Text_head">Properties</span>
+                        <span className="Text_normal">Upload cover image / cover description </span>
+                    </div>
+                    <div className="Line"></div>
+
+                    <div className="Cover_image_section">
+                    <span className = "Text_normal">Cover Image</span>
+                    </div>
+
+
+
+
+
 
                 </div>
 

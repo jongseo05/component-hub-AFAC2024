@@ -8,11 +8,14 @@ const app = express();
 const PORT = 5000;
 
 // Enable CORS to allow requests from the client
-app.use(cors({
-    origin: 'http://localhost:3000', // React 앱의 주소
-    methods: ['GET', 'POST'],
-    allowedHeaders: ['Content-Type', 'Authorization']
-}));
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*'); // 모든 도메인 허용
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type'); // Content-Type 헤더 허용
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE'); // 허용할 HTTP 메서드 설정
+    next(); // 다음 미들웨어로 넘어감
+});
+
+
 
 // Setup storage for uploaded files
 const storage = multer.diskStorage({

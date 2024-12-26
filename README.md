@@ -55,7 +55,7 @@ component-hub-AFAC2024/
 
 ### Example Files
 To test the upload and preview functionality, use the example files:
-- `example.js`: Adds a "Hello World" message to the DOM.
+- `example_button.js`: Adds a "Hello World" message to the DOM.
 - `example.css`: Styles the page with a light gray background.
 
 Place these files in the `public/example` folder to easily fetch them during testing.
