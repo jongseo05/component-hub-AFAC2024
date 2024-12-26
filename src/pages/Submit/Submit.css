@@ -144,7 +144,7 @@ input::placeholder{
 .Submit_box2 {
     display: flex;
     width: 974px;
-    height: 600px;
+    height: 1200px;
     flex-shrink: 0; /* Ensure this is needed */
     border-radius: 20px;
     background: #000;
@@ -264,14 +264,18 @@ input::placeholder{
 
 
 .Preview_section{
+
     display: flex;
     width: 879px;
     height: 468px;
     flex-shrink: 0;
+    justify-content: space-between;
 
-    margin-top: 30px;
+    margin-top: 40px;
     margin-left: 48px;
     margin-right : 48px;
+
+
 
 
 

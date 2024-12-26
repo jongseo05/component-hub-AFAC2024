@@ -6,36 +6,38 @@ const PreviewWithCodeSandbox = ({ jsContent, cssContent }) => {
     useEffect(() => {
         if (iframeRef.current) {
             try {
-                // iframe 내부 HTML 생성
                 const iframeHtml = `
-                    <!DOCTYPE html>
-                    <html lang="en">
-                    <head>
-                        <style>${cssContent || ''}</style>
-                    </head>
-                    <body>
-                        <div id="root"></div>
-                        <script>
-                            try {
-                                ${jsContent || ''}
-                            } catch (error) {
-                                document.body.innerHTML = '<pre style="color: red;">' + error.toString() + '</pre>';
-                            }
-                        </script>
-                    </body>
-                    </html>
-                `;
+                <!DOCTYPE html>
+                <html lang="en">
+                <head>
+                    <style>${cssContent || ''}</style>
+                </head>
+                <body>
+                    <div id="root"></div>
+                    <script>
+                        try {
+                            ${jsContent || ''}
+                        } catch (error) {
+                            document.body.innerHTML = '<pre style="color: red;">' + error.toString() + '</pre>';
+                        }
+                    </script>
+                </body>
+                </html>
+            `;
+                iframeRef.current.srcdoc = iframeHtml; // srcdoc 사용
 
-                // iframe에 동적 삽입
+                console.log("Generated HTML for Preview:", iframeHtml); // 로그 출력
+
                 const iframeDoc = iframeRef.current.contentWindow.document;
                 iframeDoc.open();
                 iframeDoc.write(iframeHtml);
                 iframeDoc.close();
             } catch (error) {
-                console.error('Error injecting code into iframe:', error);
+                console.error('Error injecting code into iframe:', error); // 에러 로그 출력
             }
         }
     }, [jsContent, cssContent]);
+
 
     return (
         <iframe

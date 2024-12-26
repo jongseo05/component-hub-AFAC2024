@@ -10,8 +10,20 @@ function Submit_page() {
     const [Component_name, setComponent_name] = useState("");
     const [Component_description, setComponent_description] = useState("");
     const [selectedOption, setSelectedOption] = useState("");
-    const [jsCode, setJsContent] = useState('<div>Hello World!</div>');
+    const [jsCode, setJsContent] = useState(`
+    document.getElementById('root').innerHTML = '<h1>Hello World!</h1>';
+`);
+
     const [cssCode, setCssContent] = useState('');
+
+    useEffect(() => {
+        console.log("JS Content Updated:", jsCode); // JS 코드가 변경될 때 출력
+    }, [jsCode]);
+
+    useEffect(() => {
+        console.log("CSS Content Updated:", cssCode); // CSS 코드가 변경될 때 출력
+    }, [cssCode]);
+
 
     return (
         <div>
@@ -72,13 +84,19 @@ function Submit_page() {
                             <DragDropUploader fileType="css" setFileContent={setCssContent} />
                         </div>
                     </div>
+
+                    {/* Preview Section */}
+                    <div className="Preview_section">
+                        <div className="Text_section_Category">
+                            <span className="Text_head">Live-Preview</span>
+                            <span className="Text_normal">See preview of your component</span>
+                        </div>
+
+                    </div>
+
                 </div>
 
-                {/* Preview Section */}
-                <div className="Preview_section">
-                    <span className="Text_head">Live Preview</span>
-                    <PreviewWithCodeSandbox jsContent={jsCode} cssContent={cssCode} />
-                </div>
+
             </div>
         </div>
     );

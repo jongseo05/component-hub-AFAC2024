@@ -15,6 +15,7 @@ const DragDropUploader = ({ fileType, setFileContent }) => {
 
         const reader = new FileReader();
         reader.onload = (event) => {
+            console.log(`Uploaded ${fileType.toUpperCase()} File Content:`, event.target.result); // 로그 출력
             setFileContent(event.target.result); // 파일 내용을 부모 컴포넌트로 전달
             setFile(uploadedFile);
             setUploadComplete(true); // 업로드 완료 상태 설정
