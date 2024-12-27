@@ -1,0 +1,69 @@
+.image_drag-drop-container {
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    text-align: center;
+    padding: 20px;
+    background-color: #000000;
+    color: #555;
+    font-family: "NotoSansKR-Regular";
+    font-size: 15px;
+    width: 860px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s, border-color 0.3s;
+    position: relative;
+}
+
+.drag-drop-container i {
+    font-size: 50px;
+    color: #888;
+    transition: transform 0.3s, color 0.3s;
+}
+
+.drag-drop-container.drag-active {
+    border-color: #4D4D4D;
+    background-color: #e8f5e9;
+}
+
+.drag-drop-container.drag-active i {
+    transform: scale(1.2);
+    color: #4D4D4D;
+}
+
+.drag-drop-container:hover i {
+    color: #fff;
+}
+
+.drag-drop-container:hover {
+    border-color: #fff;
+}
+
+.upload-success-container {
+    display: flex;
+    width: 900px;
+    height: 300px;
+    border-radius: 10px;
+    border: 2px solid #ccc;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+    font-family: "NotoSansKR-Regular";
+    padding: 5px;
+}
+
+.upload-success-container img.uploaded-image {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.upload-success-container p {
+    font-size: 16px;
+    color: #fff;
+    margin-top: 10px;
+}

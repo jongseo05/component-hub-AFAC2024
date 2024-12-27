@@ -6,6 +6,7 @@ import './Submit.css';
 import DragDropUploader from "./File_upload/file_upload";
 import PreviewWithCodeSandbox from './Preview/Preview'; // Preview 컴포넌트 추가
 import ReactEditor from "./react_quill_editor/ReactEditor";
+import UploadCover from "./Upload_cover/ImageUploader";
 
 function Submit_page() {
     const [Component_name, setComponent_name] = useState("");
@@ -16,6 +17,8 @@ function Submit_page() {
 `);
 
     const [cssCode, setCssContent] = useState('');
+    const [coverImage, setCoverImage] = useState(null); // 커버 이미지 상태 추가
+
 
     useEffect(() => {
         console.log("JS Content Updated:", jsCode); // JS 코드가 변경될 때 출력
@@ -24,6 +27,10 @@ function Submit_page() {
     useEffect(() => {
         console.log("CSS Content Updated:", cssCode); // CSS 코드가 변경될 때 출력
     }, [cssCode]);
+
+    useEffect(() => {
+        console.log("Cover Image Updated:", coverImage); // 커버 이미지 상태 로그 출력
+    }, [coverImage]);
 
 
     return (
@@ -117,6 +124,7 @@ function Submit_page() {
 
                     <div className="Cover_image_section">
                     <span className = "Text_normal">Cover Image</span>
+                        <UploadCover setImageContent={setCoverImage}/>
                     </div>
 
 
