@@ -7,6 +7,7 @@ import DragDropUploader from "./File_upload/file_upload";
 import PreviewWithCodeSandbox from './Preview/Preview'; // Preview 컴포넌트 추가
 import ReactEditor from "./react_quill_editor/ReactEditor";
 import UploadCover from "./Upload_cover/ImageUploader";
+import CustomDropdown from "./CustomDropDown/CustomDropDown";
 
 function Submit_page() {
     const [Component_name, setComponent_name] = useState("");
@@ -18,6 +19,13 @@ function Submit_page() {
 
     const [cssCode, setCssContent] = useState('');
     const [coverImage, setCoverImage] = useState(null); // 커버 이미지 상태 추가
+    const [tags, setTags] = useState([]);
+
+    // Component 종류 리스트 (state로 관리)
+    const componentTypes = [
+        "Navbar", "Footer", "Button", "Form", "Card", "Modal", "Table",
+        "Sidebar", "Carousel", "Dropdown", "Alert", "Spinner"
+    ];
 
 
     useEffect(() => {
@@ -62,9 +70,12 @@ function Submit_page() {
                         />
                         <div className="Editor_section">
                             <span className="Text_normal">Content</span>
-                        <ReactEditor/>
+                            <ReactEditor/>
                         </div>
-
+                        <div className="Cover_image_section">
+                            <span className="Text_normal">Cover Image</span>
+                            <UploadCover setImageContent={setCoverImage}/>
+                        </div>
 
                     </div>
                 </div>
@@ -83,9 +94,9 @@ function Submit_page() {
                                 className="Dropdown"
                             >
                                 <option value="" disabled>Component</option>
-                                <option value="option1">옵션 1</option>
-                                <option value="option2">옵션 2</option>
-                                <option value="option3">옵션 3</option>
+                                {componentTypes.map((type, index) => (
+                                    <option key={index} value={type}>{type}</option>
+                                ))}
                             </select>
                         </div>
                     </div>
@@ -94,12 +105,12 @@ function Submit_page() {
                         {/* JS */}
                         <div className="Code_input">
                             <span className="Text_head">JS</span>
-                            <DragDropUploader fileType="js" setFileContent={setJsContent} />
+                            <DragDropUploader fileType="js" setFileContent={setJsContent}/>
                         </div>
                         {/* CSS */}
                         <div className="Code_input">
                             <span className="Text_head">CSS</span>
-                            <DragDropUploader fileType="css" setFileContent={setCssContent} />
+                            <DragDropUploader fileType="css" setFileContent={setCssContent}/>
                         </div>
                     </div>
 
@@ -109,33 +120,20 @@ function Submit_page() {
                             <span className="Text_head">Live-Preview</span>
                             <span className="Text_normal">See preview of your component</span>
                         </div>
-                        <PreviewWithCodeSandbox jsContent={jsCode} cssContent={cssCode} />
+                        <PreviewWithCodeSandbox jsContent={jsCode} cssContent={cssCode}/>
                     </div>
 
                 </div>
 
-                <div className="Submit_box3">
-
-                    <div className = "Explain_section">
-                        <span className="Text_head">Properties</span>
-                        <span className="Text_normal">Upload cover image / cover description </span>
-                    </div>
-                    <div className="Line"></div>
-
-                    <div className="Cover_image_section">
-                    <span className = "Text_normal">Cover Image</span>
-                        <UploadCover setImageContent={setCoverImage}/>
-                    </div>
-
-
-
-
-
-
+                <div className="Publish_section">
+                    <button className="Preview_button">Preview</button>
+                    <button className="Publish_button">Publish</button>
                 </div>
 
 
             </div>
+
+
         </div>
     );
 }

@@ -1,0 +1,90 @@
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    background-color: #000000;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    left: 0;
+    top: 0;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);
+    border-right: 1px solid #4d4d4d;
+    overflow-y: auto; /* 사이드바 내부 스크롤 활성화 */
+    scrollbar-width: thin; /* Firefox 스크롤바 스타일 */
+    scrollbar-color: #4d4d4d #000000; /* 스크롤바 색상 */
+}
+
+/* Webkit 스크롤바 스타일 */
+.sidebar::-webkit-scrollbar {
+    width: 8px; /* 스크롤바 너비 */
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background-color: #4d4d4d; /* 스크롤바 색상 */
+    border-radius: 20px; /* 둥근 모서리 */
+    border: 2px solid #000000; /* 스크롤바 여백 (바디와 구분) */
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background-color: #000000; /* 스크롤바 트랙 색상 */
+    border-radius: 20px; /* 트랙 둥근 모서리 */
+}
+
+
+
+.sidebar-header {
+    padding: 20px;
+    text-align: center;
+    font-family: 'NotoSansKR-Bold';
+    font-size: 1.5rem;
+    border-bottom: 1px solid #4d4d4d;
+    color: #ffffff;
+}
+
+.sidebar-menu {
+    padding-top: 90px;
+}
+
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.menu-item:hover {
+
+}
+
+.menu-icon {
+    font-size: 1.2rem;
+    margin-right: 10px;
+    color: #ffffff;
+}
+
+.submenu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease, opacity 0.3s ease;
+    opacity: 0;
+}
+
+.submenu.open {
+    max-height: 1000px; /* 충분히 큰 값 */
+    opacity: 1;
+}
+
+.submenu-item {
+    padding: 5px 20px;
+    font-family: 'NotoSansKR-Regular';
+    font-size: 0.9rem;
+    color: #aaaaaa;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.submenu-item:hover {
+    color: #ffffff;
+}

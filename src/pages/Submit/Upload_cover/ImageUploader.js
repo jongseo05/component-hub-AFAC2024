@@ -68,7 +68,7 @@ const ImageUploader = ({ setImageContent }) => {
                     />
                     <label htmlFor="image-upload">
                         <i className="fas fa-image"></i>
-                        <p>Drag & Drop or click to upload an image</p>
+                        <p>Upload Cover Image</p>
                     </label>
                 </div>
             ) : (

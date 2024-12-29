@@ -1,0 +1,98 @@
+.action-buttons-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* Publish Toggle */
+.publish-toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.publish-label {
+    color: #FFF;
+    font-family: "NotoSansKR-Regular";
+    font-size: 16px;
+}
+
+/* Toggle Switch */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #444;
+    border-radius: 20px;
+    transition: 0.4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 14px;
+    width: 14px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    border-radius: 50%;
+    transition: 0.4s;
+}
+
+input:checked + .slider {
+    background-color: #4CAF50;
+}
+
+input:checked + .slider:before {
+    transform: translateX(20px);
+}
+
+/* Buttons */
+.preview-button, .save-button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: "NotoSansKR-Regular";
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    border: none;
+}
+
+.preview-button {
+    background-color: transparent;
+    color: #FFF;
+    border: 1px solid #FFF;
+}
+
+.preview-button:hover {
+    background-color: #FFF;
+    color: #000;
+}
+
+.save-button {
+    background-color: #000;
+    color: #FFF;
+    border: 1px solid #4D4D4D;
+}
+
+.save-button:hover {
+    background-color: #444;
+    color: #FFF;
+}

@@ -1,0 +1,104 @@
+.tags-input-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 10px;
+    color: #FFFFFF;
+    font-family: "NotoSansKR-Regular";
+}
+
+.tags-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.tag {
+    background-color: #1E1E1E; /* 다크 배경 */
+    color: #FFFFFF; /* 흰색 텍스트 */
+    border: 1px solid #4D4D4D; /* 테두리 */
+    padding: 5px 10px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.tag-icon {
+    margin-right: 5px;
+    font-size: 12px;
+    color: #FF6F61; /* 태그 아이콘 색상 */
+}
+
+.tag:hover {
+    background-color: #4D4D4D; /* hover 효과 */
+}
+
+.tag button {
+    background: none;
+    border: none;
+    color: #FF6F61; /* 삭제 버튼 색상 */
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.tag button:hover {
+    color: #FF3B2E; /* hover 시 삭제 버튼 강조 */
+}
+
+.input-wrapper {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+}
+
+.input-tag-icon {
+    font-size: 16px;
+    color: #4D4D4D;
+    margin-right: 10px;
+}
+
+input {
+    width: 100%;
+    border: 1px solid #4D4D4D;
+    background-color: #000000;
+    color: #FFFFFF;
+    font-family: "NotoSansKR-Regular";
+    font-size: 15px;
+    border-radius: 20px;
+    padding: 10px 10px 10px 30px; /* 태그 아이콘 공간 확보 */
+    transition: border-color 0.3s, background-color 0.3s;
+}
+
+input:focus {
+    border-color: #FF6F61; /* 포커스 효과 */
+    background-color: #1E1E1E;
+    outline: none;
+}
+
+.autocomplete-options {
+    border: 1px solid #4D4D4D;
+    background-color: #000000; /* 드롭다운 배경 */
+    color: #FFFFFF;
+    max-height: 150px;
+    overflow-y: auto;
+    border-radius: 10px;
+    margin-top: 5px;
+    position: absolute; /* 드롭다운 위치 설정 */
+    width: 100%;
+    z-index: 10;
+}
+
+.autocomplete-item {
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.autocomplete-item:hover {
+    background-color: #4D4D4D; /* hover 시 드롭다운 항목 강조 */
+    color: #FFFFFF;
+}

@@ -1,0 +1,97 @@
+.card {
+    display: flex;
+    background: transparent; /* 배경 투명 */
+    border: 1px solid #333333; /* 테두리 추가 */
+    border-radius: 10px; /* 둥근 모서리 */
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6); /* 약간의 그림자 */
+    padding: 20px;
+    width: 450px;
+    height: 240px;
+    margin: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px); /* 위로 살짝 이동 */
+    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.8); /* 더 강한 그림자 */
+    border-color: #555555; /* hover 시 테두리 색상 변경 */
+    cursor: pointer;
+}
+
+
+.Card_explain_section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 60%;
+}
+
+.Card_image_section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+}
+
+.post-image {
+    width: 100%;
+    border-radius: 10px;
+    max-height: 100%;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.status {
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.status.draft {
+    background: #f5c6cb;
+    color: #721c24;
+}
+
+.status.published {
+    background: #c3e6cb;
+    color: #155724;
+}
+
+.date {
+    font-size: 12px;
+    color: #6c757d;
+}
+
+.title {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 10px 0;
+    color: #ffffff;
+}
+
+.description {
+    font-size: 14px;
+    color: #cccccc;
+    margin-bottom: 15px;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    height: 70px;
+}
+
+.metrics {
+    font-size: 12px;
+    color: #6c757d;
+    display: flex;
+    gap: 10px;
+}
