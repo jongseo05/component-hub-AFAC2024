@@ -9,7 +9,7 @@ import ReactEditor from "./react_quill_editor/ReactEditor";
 import UploadCover from "./Upload_cover/ImageUploader";
 import CustomDropdown from "./CustomDropDown/CustomDropDown";
 
-function Submit_page() {
+function Submit_page({ onPublish }) {
     const [Component_name, setComponent_name] = useState("");
     const [Component_description, setComponent_description] = useState("");
     const [selectedOption, setSelectedOption] = useState("");
@@ -27,7 +27,6 @@ function Submit_page() {
         "Sidebar", "Carousel", "Dropdown", "Alert", "Spinner"
     ];
 
-
     useEffect(() => {
         console.log("JS Content Updated:", jsCode); // JS 코드가 변경될 때 출력
     }, [jsCode]);
@@ -40,6 +39,17 @@ function Submit_page() {
         console.log("Cover Image Updated:", coverImage); // 커버 이미지 상태 로그 출력
     }, [coverImage]);
 
+    const handlePublish = () => {
+        const data = {
+            name: Component_name,
+            description: Component_description,
+            content: jsCode,
+            css: cssCode,
+            coverImage,
+            category: selectedOption,
+        };
+        onPublish(data); // 상위 컴포넌트로 데이터 전달
+    };
 
     return (
         <div>
@@ -70,11 +80,11 @@ function Submit_page() {
                         />
                         <div className="Editor_section">
                             <span className="Text_normal">Content</span>
-                            <ReactEditor/>
+                            <ReactEditor setJsContent={setJsContent} />
                         </div>
                         <div className="Cover_image_section">
                             <span className="Text_normal">Cover Image</span>
-                            <UploadCover setImageContent={setCoverImage}/>
+                            <UploadCover setImageContent={setCoverImage} />
                         </div>
 
                     </div>
@@ -105,12 +115,12 @@ function Submit_page() {
                         {/* JS */}
                         <div className="Code_input">
                             <span className="Text_head">JS</span>
-                            <DragDropUploader fileType="js" setFileContent={setJsContent}/>
+                            <DragDropUploader fileType="js" setFileContent={setJsContent} />
                         </div>
                         {/* CSS */}
                         <div className="Code_input">
                             <span className="Text_head">CSS</span>
-                            <DragDropUploader fileType="css" setFileContent={setCssContent}/>
+                            <DragDropUploader fileType="css" setFileContent={setCssContent} />
                         </div>
                     </div>
 
@@ -120,14 +130,14 @@ function Submit_page() {
                             <span className="Text_head">Live-Preview</span>
                             <span className="Text_normal">See preview of your component</span>
                         </div>
-                        <PreviewWithCodeSandbox jsContent={jsCode} cssContent={cssCode}/>
+                        <PreviewWithCodeSandbox jsContent={jsCode} cssContent={cssCode} />
                     </div>
 
                 </div>
 
                 <div className="Publish_section">
                     <button className="Preview_button">Preview</button>
-                    <button className="Publish_button">Publish</button>
+                    <button className="Publish_button" onClick={handlePublish}>Publish</button>
                 </div>
 
 
