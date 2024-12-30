@@ -1,12 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import "../Submit/Submit.css";
 import Top_Navbar from '../Mainpage/Navbar/Top_Navbar';
 import Drawer from '../Component/Drawer/Drawer';
 import Preview from '../Submit/Preview/Preview';
+import FileDownload from "./File_download/File_download";
 import example_jpg from './example.jpg';
 import "./Blog.css";
+import "./File_download/LikeSection.css";
 
 const Blog = () => {
+    const [liked, setLiked] = useState(false);
+    const [likeCount, setLikeCount] = useState(6.98);
+
+    const [favorited, setFavorited] = useState(false);
+    const [favoriteCount, setFavoriteCount] = useState(2.45);
+
+    const handleLikeClick = () => {
+        setLiked(!liked);
+        setLikeCount(liked ? likeCount - 0.01 : likeCount + 0.01);
+    };
+
+    const handleFavoriteClick = () => {
+        setFavorited(!favorited); // 상태 변경
+        setFavoriteCount(favorited ? favoriteCount - 0.01 : favoriteCount + 0.01);
+    };
+
     const exampleData = {
         title: "The Future of Renewable Energy: Innovations and Challenges Ahead",
         image: example_jpg,
@@ -34,22 +52,36 @@ const Blog = () => {
                     <span className="Text_head">Description</span>
                     <p>{exampleData.content}</p>
 
-                    <span className = "Text_head">Preview</span>
+                    <div className="divider"></div>
+
+                    <span className="Text_head">Preview</span>
                     <div className="preview-section blog-preview">
-                        <Preview />
+                        <Preview/>
                     </div>
 
+                    <div className="divider"></div>
+
                     <div className="file-download-section">
-                        <h2>Download Files</h2>
-                        <ul className="file-list">
-                            {exampleData.files.map((file, index) => (
-                                <li key={index}>
-                                    <a href={file.url} download className="file-link">
-                                        {file.name}
-                                    </a>
-                                </li>
-                            ))}
-                        </ul>
+                        <span className="Text_head">Download</span>
+                        <FileDownload files={exampleData.files}/>
+                    </div>
+
+                    <div className="divider"></div>
+
+                    <div className="likes-section">
+                        <i
+                            className={`fas fa-heart like-icon ${liked ? "liked" : ""}`}
+                            onClick={handleLikeClick}
+                        ></i>
+                        <span className="like-count">{likeCount.toFixed(2)}k</span>
+
+                       <div className="favorites-section">
+                          <i
+                             className={`fas fa-star favorite-icon ${favorited ? "favorited" : ""}`}
+                                onClick={handleFavoriteClick}
+                            ></i>
+                              <span className="favorite-count">{favoriteCount.toFixed(2)}k</span>
+                       </div>
                     </div>
                 </div>
             </div>

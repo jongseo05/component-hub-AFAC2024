@@ -1,0 +1,66 @@
+.likes-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.likes-section .like-icon {
+    font-size: 20px;
+    color: #888;
+    cursor: pointer;
+    transition: color 0.3s ease-in-out;
+}
+
+.likes-section .like-icon.liked {
+    color: white;
+}
+
+.likes-section .like-count {
+    font-size: 16px;
+    color: #fff;
+}
+
+.likes-section .profile-images {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.likes-section .profile-images img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+}
+
+/* 즐겨찾기 아이콘 스타일 추가 */
+.favorites-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+
+}
+
+.favorites-section .favorite-icon {
+    font-size: 20px;
+    color: #888;
+    cursor: pointer;
+    transition: color 0.3s ease-in-out; /* 모든 상태 전환을 부드럽게 처리 */
+}
+
+.favorites-section .favorite-icon.favorited {
+    color: white; /* 즐겨찾기된 상태에서의 색상 */
+}
+
+.favorites-section .favorite-icon.clicked {
+    color: #fff; /* 클릭 시 흰색으로 전환 */
+}
+
+
+.favorites-section .favorite-count {
+    font-size: 16px;
+    color: #fff;
+}
